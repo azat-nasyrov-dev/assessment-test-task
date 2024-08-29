@@ -36,7 +36,7 @@ export class UsersService {
         throw new HttpException('This user has already been registered', HttpStatus.BAD_REQUEST);
       }
 
-      const newUser = new this.userModel(createUserDto);
+      const newUser = await this.userModel.create(createUserDto);
       await newUser.save();
 
       try {
